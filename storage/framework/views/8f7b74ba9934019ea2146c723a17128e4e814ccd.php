@@ -8,7 +8,7 @@
 } ?>
 <?php unset($__defined_vars); ?>
 
-<a href="/categories/<?php echo e($category->slug); ?>"
+<a href="/?category=<?php echo e($category->slug); ?>"
     class="px-3 py-1 border border-blue-400 rounded-full text-blue-400 text-xs uppercase font-semibold"
     style="font-size: 10px">
         <?php echo e($category->name); ?>

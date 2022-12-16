@@ -8,22 +8,18 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public static function index()
     {
-        return view('posts', [
-            'posts' => Post::latest()->filter(request(['search']))->get(),
-            'categories' => Category::all()
+        return view('posts.index', [
+            'posts' => Post::latest()->filter(request(['search','category','author']))->paginate(5)->withQueryString()
         ]);
     }
 
-
     public function show(Post $post){ // Post::where('slug',$post)->first();
-        return view('post', [
+        return view('posts.show', [
             'posts' => $post
         ]);
     }
-
-
 
 
 

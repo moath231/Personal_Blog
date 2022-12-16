@@ -1,68 +1,79 @@
-<?php return array (
-  'facade/ignition' => 
-  array (
-    'providers' => 
-    array (
+<?php return array(
+  'facade/ignition' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Facade\\Ignition\\IgnitionServiceProvider',
     ),
-    'aliases' => 
-    array (
+    'aliases' =>
+    array(
       'Flare' => 'Facade\\Ignition\\Facades\\Flare',
     ),
   ),
-  'fruitcake/laravel-cors' => 
-  array (
-    'providers' => 
-    array (
+  'fruitcake/laravel-cors' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
-  'laravel-frontend-presets/tailwindcss' => 
-  array (
-    'providers' => 
-    array (
+  'itsgoingd/clockwork' =>
+  array(
+    'providers' =>
+    array(
+      0 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
+    ),
+    'aliases' =>
+    array(
+      'Clockwork' => 'Clockwork\\Support\\Laravel\\Facade',
+    ),
+  ),
+  'laravel-frontend-presets/tailwindcss' =>
+  array(
+    'providers' =>
+    array(
       0 => 'LaravelFrontendPresets\\TailwindCssPreset\\TailwindCssPresetServiceProvider',
     ),
   ),
-  'laravel/sail' => 
-  array (
-    'providers' => 
-    array (
+  'laravel/sail' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Laravel\\Sail\\SailServiceProvider',
     ),
   ),
-  'laravel/sanctum' => 
-  array (
-    'providers' => 
-    array (
+  'laravel/sanctum' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
-  'laravel/tinker' => 
-  array (
-    'providers' => 
-    array (
+  'laravel/tinker' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laravel/ui' => 
-  array (
-    'providers' => 
-    array (
+  'laravel/ui' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
-  'nesbot/carbon' => 
-  array (
-    'providers' => 
-    array (
+  'nesbot/carbon' =>
+  array(
+    'providers' =>
+    array(
       0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
-  'nunomaduro/collision' => 
-  array (
-    'providers' => 
-    array (
+  'nunomaduro/collision' =>
+  array(
+    'providers' =>
+    array(
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
