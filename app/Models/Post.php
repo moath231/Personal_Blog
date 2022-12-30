@@ -10,7 +10,6 @@ class Post extends Model
     use HasFactory;
 
     protected $with = ['category', 'author'];
-    protected $guarded = [];
 
     public function scopeFilter($query, array $filter)
     {
@@ -34,6 +33,16 @@ class Post extends Model
         $query->whereHas('author',fn ($query) =>
             $query->where('username', $author)
         ));
+    }
+
+    /**
+     * Get all of the comments for the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function category()

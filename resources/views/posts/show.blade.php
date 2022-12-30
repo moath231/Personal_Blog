@@ -3,8 +3,7 @@
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                 <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                    <img src="/images/illustration-1.png" alt="" class="rounded-xl">
-
+                    <img src="{{ asset('/storage/'.$posts->thembnail ) }}" alt="" class="rounded-xl">
                     <p class="mt-4 block text-gray-400 text-xs">
                         Published <time>{{ $posts->created_at->diffForHumans() }}</time>
                     </p>
@@ -13,7 +12,9 @@
                         <img src="/images/lary-avatar.svg" alt="Lary avatar">
                         <div class="ml-3">
                             <div class="ml-3">
-                                <h5 class="font-bold"><a href="/?author={{ $posts->author->username }}">{{ $posts->author->name }}</a></h5>
+                                <h5 class="font-bold"><a
+                                        href="/?author={{ $posts->author->username }}">{{ $posts->author->name }}</a>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -48,6 +49,13 @@
                         {{ $posts->body }}
                     </div>
                 </div>
+
+                <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                    @include('posts._comment-form')
+                    @foreach ($posts->comments as $com)
+                        <x-post-comment :comment="$com" />
+                    @endforeach
+                </section>
             </article>
         </main>
 

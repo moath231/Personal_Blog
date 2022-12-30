@@ -8,13 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel From Scratch Blog</title>
+    <title>Blog</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     {{-- font --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,37 +27,7 @@
 
 </head>
 
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-
-    {{-- <div id="app">
-        <header class="bg-blue-900 py-6">
-            <div class="container mx-auto flex justify-between items-center px-6">
-                <div>
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-                <nav class="space-x-4 text-gray-100 text-sm sm:text-base">
-                    @guest
-                        <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @if (Route::has('register'))
-                            <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    @else
-                        <span>{{ Auth::user()->name }}</span>
-
-                        <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline"
-                           onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            {{ csrf_field() }}
-                        </form>
-                    @endguest
-                </nav>
-            </div>
-        </header>
-    </div> --}}
+<body class=" bg-white h-screen antialiased leading-none font-sans">
     <section class="px-6 py-8">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
@@ -64,10 +36,26 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a href="/" class="text-xs font-bold uppercase">Home Page</a>
-
-                <a href="#"
+            <div class="mt-8 md:mt-0 flex items-center">
+                @auth
+                    <x-drop-down>
+                        <x-slot name="tregger">
+                            <button>welcome, {{ auth()->user()->name }}!</button>
+                        </x-slot>
+                        <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">dashborad</x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        <x-dropdown-item href="#" x-data="{}"
+                            @click.prevent="document.querySelector('#logoutform').submit()">logout</x-dropdown-item>
+                        <form action="/logout" method="post" class="hidden" id="logoutform">
+                            @csrf
+                        </form>
+                    </x-drop-down>
+                @endauth
+                @guest
+                    <a href="/register" class="text-xs font-bold uppercase">Register</a>
+                    <a href="/login" class="text-xs font-bold uppercase ml-2">login</a>
+                @endguest
+                <a href="#newsletter"
                     class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a>
@@ -76,21 +64,21 @@
 
         {{ $slot }}
 
-        <footer class="bg-gray-200 border border-gray border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+        <footer class="bg-gray-200 border border-gray border-opacity-5 rounded-xl text-center py-16 px-10 mt-16"
+            id="newsletter">
             <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
             <h5 class="text-3xl">Stay in touch with the latest posts</h5>
             <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
 
             <div class="mt-10">
                 <div class="relative inline-block mx-auto lg:bg-gray-300 rounded-full">
-
-                    <form method="POST" action="#" class="lg:flex text-sm">
+                    <form method="POST" action="/newsletter" class="lg:flex text-sm">
+                        @csrf
                         <div class="lg:py-3 lg:px-5 flex items-center">
                             <label for="email" class="hidden lg:inline-block">
                                 <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                             </label>
-
-                            <input id="email" type="text" placeholder="Your email address"
+                            <input id="email" type="text" placeholder="Your email address" name="email"
                                 class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none outline-none">
                         </div>
 
@@ -100,6 +88,7 @@
                         </button>
                     </form>
                 </div>
+                <x-form.error name="email" />
             </div>
         </footer>
 

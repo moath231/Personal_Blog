@@ -13,7 +13,7 @@
     >
     <div class="py-6 px-5">
         <div>
-            <img src="/images/illustration-3.png" alt="Blog Post illustration" class="rounded-xl">
+            <img src="<?php echo e(asset('storage/'.$post->thembnail )); ?>" alt="Blog Post illustration" class="rounded-xl">
         </div>
 
         <div class="mt-8 flex flex-col justify-between">

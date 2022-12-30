@@ -9,11 +9,12 @@ class CategoryFactory extends Factory
 {
 
     protected $model = Category::class;
+
     public function definition()
     {
         return [
             'name' => $this->faker->word(),
-            'slug' => $this->faker->unique->slug()
+            'slug' => $this->faker->unique()->slug()
         ];
     }
 }
