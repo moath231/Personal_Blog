@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PostCommentController;
 
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ Route::post('/newsletter', function () {
         ]);
     } catch (\Exception $e) {
         throw \Illuminate\Validation\ValidationException::withMessages([
-            'email'=>"this email can't be add to subscribe list"
+            'email' => "this email can't be add to subscribe list",
         ]);
     }
 
@@ -58,10 +58,10 @@ Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::post('logout', [SessionController::class, 'distroy'])->middleware('auth');
 
+Route::middleware('can:admin')->group(function () {
+    Route::resource('admin/posts', AdminPostController::class)->except('show');
+});
 
-Route::get('admin/posts/create',[AdminPostController::class,'create'])->middleware('admin');
-Route::post('admin/posts',[AdminPostController::class,'store'])->middleware('admin');
-Route::get('admin/posts',[AdminPostController::class,'index'])->middleware('admin');
-Route::get('admin/posts/{post}/edit',[AdminPostController::class,'edit'])->middleware('admin');
-Route::patch('admin/posts/{post}',[AdminPostController::class,'update'])->middleware('admin');
-Route::DELETE('admin/posts/{post}',[AdminPostController::class,'distroy'])->middleware('admin');
+Route::middleware('can:admin')->group(function () {
+    Route::resource('admin/category', AdminCategoryController::class);
+});

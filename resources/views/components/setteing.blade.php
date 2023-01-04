@@ -17,6 +17,14 @@
                     <a href="/admin/posts/create"
                         class="{{ request()->is('admin/posts/create') ? 'text-blue-500' : '' }}">new post</a>
                 </li>
+                <li>
+                    <a href="/admin/category"
+                        class="{{ request()->is('admin/category') ? 'text-blue-500' : '' }}">All category</a>
+                </li>
+                <li>
+                    <a href="/admin/category/create"
+                        class="{{ request()->is('admin/category/create') ? 'text-blue-500' : '' }}">new category</a>
+                </li>
             </ul>
         </aside>
         <main class="flex-1">

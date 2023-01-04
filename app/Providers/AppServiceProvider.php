@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Support\ServiceProvider;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +27,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Paginator::useTailwind();
         Model::unguard();
+
+        Gate::define('admin', function (User $user) {
+            return $user->username === 'moath231';
+        });
+
+        Blade::if('admin', function () {
+            return request()->user()?->can('admin');
+        });
     }
 }

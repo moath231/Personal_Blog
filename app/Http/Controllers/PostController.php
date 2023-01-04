@@ -6,7 +6,7 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public static function index()
+    public function index()
     {
         return view('posts.index', [
             'posts' => Post::latest()
