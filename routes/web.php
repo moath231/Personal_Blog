@@ -63,5 +63,5 @@ Route::middleware('can:admin')->group(function () {
 });
 
 Route::middleware('can:admin')->group(function () {
-    Route::resource('admin/category', AdminCategoryController::class);
+    Route::resource('admin/category', AdminCategoryController::class)->except('show');
 });
