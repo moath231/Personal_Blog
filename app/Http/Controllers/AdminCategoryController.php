@@ -42,7 +42,7 @@ class AdminCategoryController extends Controller
 
         Category::create($attributes);
 
-        return redirect('/');
+        return redirect('/admin/category');
 
 
     }
@@ -101,7 +101,9 @@ class AdminCategoryController extends Controller
     {
         $resource = Category::findOrFail($id);
 
+        $resource->posts()->Delete();
         $resource->delete();
+
 
         return redirect('/admin/category');
     }

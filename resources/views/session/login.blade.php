@@ -5,10 +5,14 @@
             <form action="/login" method="POST" class="mt-10">
                 @csrf
 
-                <x-form.input name="email" type="email" autocomplete="username"/>
-                <x-form.input name="password" type="password" autocomplete="new-password"/>
+                <x-form.input name="email" type="email" autocomplete="username" />
+                <x-form.input name="password" type="password" autocomplete="new-password" />
 
-                <x-form.button>login</x-form.button>
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
+                <x-form.error name="g-recaptcha-response" />
+
+                <x-form.button class="mt-5">login</x-form.button>
             </form>
         </main>
     </section>

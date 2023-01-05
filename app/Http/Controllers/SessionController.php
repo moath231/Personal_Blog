@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
+
+
     public function create()
     {
         return view('session.login');
@@ -14,11 +15,14 @@ class SessionController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         if (auth()->attempt($attributes)) {
             session()->regenerate();
 

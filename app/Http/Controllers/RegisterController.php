@@ -14,6 +14,10 @@ class RegisterController extends Controller
     public function store()
     {
 
+        request()->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
         $attributes = request()->validate([
             'name' => 'required|min:2|max:255',
             'username' => 'required|min:6|unique:users,username',

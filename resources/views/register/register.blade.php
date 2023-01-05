@@ -8,7 +8,12 @@
                 <x-form.input name="email" type="email"/>
                 <x-form.input name="username" type="text"/>
                 <x-form.input name="password" type="password"/>
-                <x-form.button>submite</x-form.button>
+
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
+                <x-form.error name="g-recaptcha-response" />
+
+                <x-form.button class="mt-5">submite</x-form.button>
 
             </form>
         </main>

@@ -26,7 +26,7 @@ class AdminPostController extends Controller
             'thembnail'=>request()->file('thembnail')->store('thembnail')
         ]));
 
-        return redirect('/');
+        return redirect('/admin/posts');
     }
 
     public function edit(Post $post)
@@ -36,6 +36,10 @@ class AdminPostController extends Controller
 
     public function update(Post $post)
     {
+        request()->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
         $attributes = $this->validatePost($post);
 
         if ($attributes['thembnail'] ?? false) {
@@ -47,7 +51,7 @@ class AdminPostController extends Controller
         return back()->with('success', 'Post Updated!');
     }
 
-    public function distroy(Post $post)
+    public function destroy(Post $post)
     {
         $post->delete();
 

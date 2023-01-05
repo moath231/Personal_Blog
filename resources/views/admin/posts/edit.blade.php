@@ -33,7 +33,11 @@
                 <x-form.error name="category_id" />
             </x-form.field>
 
-            <x-form.button>publish</x-form.button>
+            {!! NoCaptcha::renderJs() !!}
+            {!! NoCaptcha::display() !!}
+            <x-form.error name="g-recaptcha-response" />
+
+            <x-form.button class="mt-5">publish</x-form.button>
         </form>
     </x-setteing>
 
