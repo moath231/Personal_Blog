@@ -20,7 +20,7 @@ To run this project, you need to have the following tools installed on your mach
 
 Installation:
 To install the project, follow these steps:
-- Clone the repository from GitHub: https://github.com/moath231/laravel8_training_laracast
+- Clone the repository from GitHub: https://github.com/moath231/Personal_Blog
 - Install dependencies using Composer and NPM:
   - Run `composer install` to install PHP dependencies.
   - Run `npm install` to install Node.js dependencies.
