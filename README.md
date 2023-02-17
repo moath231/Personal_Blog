@@ -22,7 +22,7 @@ Installation:
 To install the project, follow these steps:
 - Clone the repository from GitHub: https://github.com/moath231/laravel8_training_laracast
 - Install dependencies using Composer and NPM:
-  - Run 'composer install' to install PHP dependencies.
+  - Run `composer install` to install PHP dependencies.
   - Run 'npm install' to install Node.js dependencies.
 - Create a new MySQL database and update the .env file with your database information.
 - Run the database migrations and seed the database with sample data:
