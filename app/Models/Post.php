@@ -35,11 +35,7 @@ class Post extends Model
         ));
     }
 
-    /**
-     * Get all of the comments for the Post
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -48,8 +44,8 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-        Category::truncate();
     }
+
 
     public function author()
     {
