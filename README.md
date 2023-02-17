@@ -23,23 +23,23 @@ To install the project, follow these steps:
 - Clone the repository from GitHub: https://github.com/moath231/laravel8_training_laracast
 - Install dependencies using Composer and NPM:
   - Run `composer install` to install PHP dependencies.
-  - Run 'npm install' to install Node.js dependencies.
+  - Run `npm install` to install Node.js dependencies.
 - Create a new MySQL database and update the .env file with your database information.
 - Run the database migrations and seed the database with sample data:
-  - Run 'php artisan migrate' to create database tables.
-  - Run 'php artisan db:seed' to add sample data to the database.
+  - Run `php artisan migrate` to create database tables.
+  - Run `php artisan db:seed` to add sample data to the database.
 - Generate an application key:
-  - Run 'php artisan key:generate' to generate a new application key.
+  - Run `php artisan key:generate` to generate a new application key.
 - Start the development server:
-  - Run 'php artisan serve' to start the development server.
+  - Run `php artisan serve` to start the development server.
 
   Usage:
   To use the blog, follow these steps:
 
 - Open your web browser and navigate to the URL of the development server.
-- Click on the 'Login' link to access the admin panel.
+- Click on the `Login` link to access the admin panel.
 - Use the following credentials to log in:
-  - Email: admin@example.com
+  - Email: moath231
   - Password: password
 - Once logged in, you can add, edit, and delete blog posts and comments.
 - To view the blog posts, click on the 'View Blog' link in the navigation menu.
