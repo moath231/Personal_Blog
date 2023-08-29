@@ -16,7 +16,7 @@ To run this project, you need to have the following tools installed on your mach
 
 - PHP 8.0 or 7.2
 - Composer  
-- Node.js and NPM 
+- Node.js and NPM asdsad
 
 Installation:
 To install the project, follow these steps:
