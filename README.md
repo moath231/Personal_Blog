@@ -17,7 +17,7 @@ To run this project, you need to have the following tools installed on your mach
 - PHP 8.0 or 7.2
 - Composer  
 - Node.js and NPM asdsad
-
+s
 Installation:
 To install the project, follow these steps:
 - Clone the repository from GitHub: https://github.com/moath231/Personal_Blog
